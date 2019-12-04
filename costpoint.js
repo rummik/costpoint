@@ -113,6 +113,7 @@ class Costpoint {
     await this.page.type("#USER", username);
     await this.page.type("#CLIENT_PASSWORD", password);
     await this.page.type("#DATABASE", database);
+    await this.page.click("#oldui");
     await this.page.click("#loginBtn");
     try {
       await this.page.waitForSelector("#loginBtn", {
@@ -165,6 +166,15 @@ class Costpoint {
   }
 
   async _startdate() {
+    await this.page.waitForSelector("#bus__TC", { visible: true });
+    await this.page.click("#bus__TC");
+    await this.page.waitForSelector("#dpt__TM", { visible: true });
+    await this.page.click("#dpt__TM");
+    await this.page.waitForSelector("#wrk__Timesheets", { visible: true });
+    await this.page.click("#wrk__Timesheets");
+    await this.page.waitForSelector("#actvty__TMMTIMESHEET", { visible: true });
+    await this.page.click("#actvty__TMMTIMESHEET");
+    await this.page.waitForSelector("#hdDiv26_1", { visible: true });
     await this.page.waitForSelector("#hdDiv26_1", { visible: true });
     return moment(
       new Date(
